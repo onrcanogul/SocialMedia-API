@@ -17,7 +17,8 @@ namespace SocialMedia.Application.Features.Queries.Posts.GetAllPosts
 
             return new()
             {
-                Posts = posts
+                Posts = posts,
+                Count = posts.Count
             };
 
         }

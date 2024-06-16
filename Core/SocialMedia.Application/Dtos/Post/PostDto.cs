@@ -11,7 +11,7 @@ namespace SocialMedia.Application.Dtos
     {
         public string Title { get; set; } = null!;
         public string Description { get; set; } = null!;
-        public ICollection<Comment>? Comments { get; set; }
+        public ICollection<CommentDto>? Comments { get; set; }
         public virtual ICollection<Like> Likes { get; set; } = new List<Like>();
         public virtual ICollection<Dislike> Dislikes { get; set; } = new List<Dislike>();
         public AppUser User { get; set; }

@@ -12,7 +12,7 @@ namespace SocialMedia.Application.Features.Commands.Users.CreateUser
     {
         public async Task<CreateUserCommandResponse> Handle(CreateUserCommandRequest request, CancellationToken cancellationToken)
         {
-            await userService.CreateAsync(new() { Email = request.Email, Name = request.Name, Password = request.Password, ConfirmPassword = request.ConfirmPassword, Surname = request.Surname, UserName = request.UserName })
+            await userService.CreateAsync(new() { Email = request.Email, Name = request.Name, Password = request.Password, ConfirmPassword = request.ConfirmPassword, Surname = request.Surname, UserName = request.UserName });
 
             return new();
         }

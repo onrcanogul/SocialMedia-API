@@ -13,7 +13,7 @@ namespace SocialMedia.Application.Dtos
         public string Name { get; set; } = null!;
         public string Surname { get; set; } = null!;
         public string NameSurname => $"{Name} + {Surname}";
-        public ICollection<Comment> Comments { get; set; } = new List<Comment>();
+        public ICollection<CommentDto> Comments { get; set; } = new List<CommentDto>();
         public ICollection<PostDto> Posts { get; set; } = new List<PostDto>();
         public virtual ICollection<Friendship> Friendships { get; set; } = new List<Friendship>();
         public virtual ICollection<Like> Likes { get; set; } = new List<Like>();

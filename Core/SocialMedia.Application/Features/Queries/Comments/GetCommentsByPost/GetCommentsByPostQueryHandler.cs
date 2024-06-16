@@ -13,7 +13,7 @@ namespace SocialMedia.Application.Features.Queries.Comments.GetCommentsByPost
     {
         public async Task<GetCommentsByPostQueryResponse> Handle(GetCommentsByPostQueryRequest request, CancellationToken cancellationToken)
         {
-            List<CommentDto> comments = await commentService.GetCommentsByPostAsync(request.PostId);
+            List<CommentDto> comments = await commentService.GetCommentsByPostAsync(request.Id);
 
             return new()
             {
