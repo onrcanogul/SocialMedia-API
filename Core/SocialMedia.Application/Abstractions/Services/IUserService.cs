@@ -13,5 +13,7 @@ namespace SocialMedia.Application.Abstractions.Services
         Task CreateAsync(CreateUserDto createUserDto);
 
         Task UpdateRefreshTokenAsync(string refreshToken, AppUser user, DateTime accessTokenEndDate);
+
+        Task<List<UserDto>> GetAllUsers();
     }
 }

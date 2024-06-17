@@ -14,9 +14,9 @@ namespace SocialMedia.API.Controllers
     public class PostsController(IMediator mediator) : ControllerBase
     {
         [HttpGet]
-        public async Task<IActionResult> GetPosts(GetAllPostsQueryRequest request)
+        public async Task<IActionResult> GetPosts()
         {
-            GetAllPostsQueryResponse response = await mediator.Send(request);
+            GetAllPostsQueryResponse response = await mediator.Send(new GetAllPostsQueryRequest());
             return Ok(response);
         }
         [HttpGet("{Id}")]

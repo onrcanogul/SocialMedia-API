@@ -16,6 +16,7 @@ namespace SocialMedia.Application.Features.Commands.Comments.CreateComment
             {
                 Message = request.Message,
                 UserId = request.UserId,
+                PostId = request.PostId
             });
 
             return new()

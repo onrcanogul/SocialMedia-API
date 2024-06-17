@@ -14,25 +14,30 @@ namespace SocialMedia.Persistance.Services
     {
         public async Task Dislike(string postId, string userId)
         {
-            bool result = likeRepository.Table.Any(x => x.PostId == Guid.Parse(postId) && x.UserId == userId);
-            if (!result)
+            bool likeResult = await likeRepository.Table.AnyAsync(x => x.PostId == Guid.Parse(postId) && x.UserId == userId);
+            Dislike? dislikeResult = await dislikeRepository.Table.FirstOrDefaultAsync(x => x.PostId == Guid.Parse(postId) && x.UserId == userId);
+            if (!likeResult && dislikeResult == null)
             {
                 Dislike dislike = new Dislike()
                 {
-                    CreatedDate = DateTime.Now,
+                    CreatedDate = DateTime.UtcNow,
                     Id = Guid.NewGuid(),
                     PostId = Guid.Parse(postId),
                     UserId = userId
                 };
 
                 await dislikeRepository.AddAsync(dislike);
-                await unitOfWork.CommitAsync();
+                
             }
+            else if(!likeResult && dislikeResult != null)      
+                dislikeRepository.Delete(dislikeResult);
+            
             else
                 throw new Exception("You cant like and dislike at the same time");
+            await unitOfWork.CommitAsync();
         }
 
-        public async Task<DislikeDto> GetDislikes(string postId)
+        public async Task<DislikeResponseDto> GetDislikes(string postId)
         {
             List<AppUser> users = await dislikeRepository.Table.Include(x => x.User).Where(x => x.PostId == Guid.Parse(postId)).Select(x => x.User).ToListAsync();
 
@@ -45,7 +50,7 @@ namespace SocialMedia.Persistance.Services
             };
         }
 
-        public async Task<LikeDto> GetLikes(string postId)
+        public async Task<LikeResponseDto> GetLikes(string postId)
         {
             List<AppUser> users = await likeRepository.Table.Include(x => x.User).Where(x => x.PostId == Guid.Parse(postId)).Select(x => x.User).ToListAsync();
 
@@ -74,19 +79,31 @@ namespace SocialMedia.Persistance.Services
 
         public async Task Like(string postId, string userId)
         {
-            bool result = dislikeRepository.Table.Any(x => x.PostId == Guid.Parse(postId) && x.UserId == userId);
-            if (!result)
+            Like? likeResult = await likeRepository.Table.FirstOrDefaultAsync(x => x.PostId == Guid.Parse(postId) && x.UserId == userId);
+            bool dislikeResult = await dislikeRepository.Table.AnyAsync(x => x.PostId == Guid.Parse(postId) && x.UserId == userId);
+            
+            if (!dislikeResult && likeResult == null)
             {
                 Like like = new()
                 {
+                    Id = Guid.NewGuid(),
                     PostId = Guid.Parse(postId),
-                    UserId = userId
+                    UserId = userId,
+                    CreatedDate = DateTime.UtcNow,
                 };
                 await likeRepository.AddAsync(like);
+            }
+            else if (!dislikeResult && likeResult != null)      
+                likeRepository.Delete(likeResult); 
+            else
+                throw new Exception("you can not like and dislike at the same time");
+            try
+            {
                 await unitOfWork.CommitAsync();
             }
-            else
-                throw new Exception("You cant like and dislike at the same time");
+            catch (Exception ex)
+            {
+            }
         }
     }
 }

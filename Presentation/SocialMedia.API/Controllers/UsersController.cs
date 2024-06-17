@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using SocialMedia.Application.Features.Commands.Users.CreateUser;
+using SocialMedia.Application.Features.Queries.Users;
 
 namespace SocialMedia.API.Controllers
 {
@@ -12,6 +13,12 @@ namespace SocialMedia.API.Controllers
         public async Task<IActionResult> CreateUser(CreateUserCommandRequest request)
         {
             CreateUserCommandResponse response = await mediator.Send(request);
+            return Ok(response);
+        }
+        [HttpGet]
+        public async Task<IActionResult> GetAllUsers()
+        {
+            GetAllUsersQueryResponse response = await mediator.Send(new GetAllUsersQueryRequest());
             return Ok(response);
         }
 

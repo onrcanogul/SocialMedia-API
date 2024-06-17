@@ -1,17 +1,20 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using SocialMedia.Application.Abstractions.Services;
 using SocialMedia.Application.Dtos;
 using SocialMedia.Domain.Entities;
 
 namespace SocialMedia.Persistance.Services
 {
-    public class UserService(UserManager<AppUser> userManager) : IUserService
+    public class UserService(UserManager<AppUser> userManager, IMapper mapper) : IUserService
     {
         public async Task CreateAsync(CreateUserDto createUserDto)
         {
             CheckConfirm(createUserDto.Password, createUserDto.ConfirmPassword);
             AppUser user = new()
             {
+                Id = Guid.NewGuid().ToString(),
                 Name = createUserDto.Name,
                 Surname = createUserDto.Surname,
                 Email = createUserDto.Email,
@@ -22,6 +25,13 @@ namespace SocialMedia.Persistance.Services
             {
                 throw new Exception("User is not created");
             }
+        }
+
+        public async Task<List<UserDto>> GetAllUsers()
+        {
+            List<AppUser> users = await userManager.Users.ToListAsync();
+            List<UserDto> usersDto = mapper.Map<List<UserDto>>(users);
+            return usersDto;
         }
 
         public async Task UpdateRefreshTokenAsync(string refreshToken, AppUser user, DateTime accessTokenEndDate)

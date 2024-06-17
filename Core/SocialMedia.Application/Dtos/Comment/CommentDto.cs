@@ -11,6 +11,6 @@ namespace SocialMedia.Application.Dtos
     {
         public string Message { get; set; } = null!;
         public string UserId { get; set; } = null!;
-        public AppUser User { get; set; }
+        public UserDto User { get; set; }
     }
 }

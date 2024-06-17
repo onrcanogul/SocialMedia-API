@@ -69,6 +69,8 @@ namespace SocialMedia.Persistance.Services
 
         private IQueryable<Post> GetPostQuery => repository.Table
                 .Include(x => x.User)
+                .Include(x => x.Likes)
+                .Include(x => x.Dislikes)
                 .Include(x => x.Comments);
     }
 }

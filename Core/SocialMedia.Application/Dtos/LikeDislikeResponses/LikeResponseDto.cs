@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace SocialMedia.Application.Dtos.LikeDislike
 {
-    public class DislikeDto
+    public class LikeResponseDto
     {
-        public string UserId { get; set; }
+        public List<UserDto> Users { get; set; }
+        public int Count { get; set; }
     }
 }

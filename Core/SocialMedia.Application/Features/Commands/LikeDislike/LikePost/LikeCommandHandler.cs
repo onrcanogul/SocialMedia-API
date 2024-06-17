@@ -12,7 +12,7 @@ namespace SocialMedia.Application.Features.Commands.Likes.LikePost
     {
         public async Task<LikeCommandResponse> Handle(LikeCommandRequest request, CancellationToken cancellationToken)
         {
-            await service.Like(request.PostId, request.PostId);
+            await service.Like(request.PostId,request.UserId);
 
             return new();
         }

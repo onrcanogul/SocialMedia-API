@@ -16,12 +16,12 @@ namespace SocialMedia.API.Controllers
     public class CommentsController(IMediator mediator) : ControllerBase
     {
         [HttpGet]
-        public async Task<IActionResult> GetAllComments(GetAllCommentsQueryRequest request)
+        public async Task<IActionResult> GetAllComments()
         {
-            GetAllCommentsQueryResponse response = await mediator.Send(request);
+            GetAllCommentsQueryResponse response = await mediator.Send(new GetAllCommentsQueryRequest());
             return Ok(response);
         }
-        [HttpGet]
+        [HttpGet("{Id}")]
         public async Task<IActionResult> GetCommentById(GetCommentByIdQueryRequest request)
         {
             GetCommentByIdQueryResponse response = await mediator.Send(request);

@@ -17,7 +17,7 @@ namespace SocialMedia.Application.Abstractions.Services
 
         Task<UsersLikeDto> GetUsersLikes(string userId);
 
-        Task<LikeDto> GetLikes(string postId);
-        Task<DislikeDto> GetDislikes(string postId);
+        Task<LikeResponseDto> GetLikes(string postId);
+        Task<DislikeResponseDto> GetDislikes(string postId);
     }
 }

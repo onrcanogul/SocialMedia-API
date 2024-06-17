@@ -8,7 +8,6 @@ namespace SocialMedia.Application.Dtos.LikeDislike
 {
     public class LikeDto
     {
-        public List<UserDto> Users { get; set; }
-        public int Count { get; set; }
+        public string UserId { get; set; }
     }
 }

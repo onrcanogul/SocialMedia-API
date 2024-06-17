@@ -11,7 +11,7 @@ namespace SocialMedia.Domain.Entities
     {
         public string Name { get; set; } = null!;
         public string Surname { get; set; } = null!;
-        public string NameSurname => $"{Name} + {Surname}";
+        public string NameSurname => $"{Name} {Surname}";
         public ICollection<Comment> Comments { get; set; } = new List<Comment>();
         public ICollection<Post> Posts { get; set; } = new List<Post>();
         public virtual ICollection<Friendship> Friendships { get; set; } = new List<Friendship>();

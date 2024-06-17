@@ -11,6 +11,7 @@ namespace SocialMedia.Application.Dtos
         public Guid Id { get; } = Guid.NewGuid();
         public string Message { get; set; }
         public string UserId { get; set; }
+        public string PostId { get; set; }
         public DateTime CreatedDate { get; } = DateTime.UtcNow;
     }
 }

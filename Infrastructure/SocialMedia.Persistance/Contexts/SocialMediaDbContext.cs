@@ -29,31 +29,9 @@ namespace SocialMedia.Persistance.Contexts
                 .WithMany()
                 .HasForeignKey(f => f.UserId2)
                 .OnDelete(DeleteBehavior.Restrict);
-            builder.Entity<Like>()
-        .HasKey(l => l.Id);
 
-            builder.Entity<Like>()
-                .HasOne(l => l.User)
-                .WithMany(u => u.Likes)
-                .HasForeignKey(l => l.UserId);
 
-            builder.Entity<Like>()
-                .HasOne(l => l.Post)
-                .WithMany(p => p.Likes)
-                .HasForeignKey(l => l.PostId);
-
-            builder.Entity<Dislike>()
-                .HasKey(d => d.Id);
-
-            builder.Entity<Dislike>()
-                .HasOne(d => d.User)
-                .WithMany(u => u.Dislikes)
-                .HasForeignKey(d => d.UserId);
-
-            builder.Entity<Dislike>()
-                .HasOne(d => d.Post)
-                .WithMany(p => p.Dislikes)
-                .HasForeignKey(d => d.PostId);
+            
 
             base.OnModelCreating(builder);
         }

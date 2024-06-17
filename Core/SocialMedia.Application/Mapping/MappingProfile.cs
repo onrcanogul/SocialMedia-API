@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using SocialMedia.Application.Dtos;
+using SocialMedia.Application.Dtos.LikeDislike;
 using SocialMedia.Application.Dtos.Post;
 using SocialMedia.Domain.Entities;
 namespace SocialMedia.Application.Mapping
@@ -17,6 +18,15 @@ namespace SocialMedia.Application.Mapping
             CreateMap<CreateCommentDto, Comment>().ReverseMap();
             CreateMap<CommentDto, Comment>().ReverseMap();
             CreateMap<UpdateCommentDto, Comment>().ReverseMap();
+
+            //user
+            CreateMap<UserDto,AppUser>().ReverseMap();    
+
+            //like
+            CreateMap<LikeDto,Like>().ReverseMap();
+
+            //dislike
+            CreateMap<DislikeDto,Dislike>().ReverseMap();
 
         }
     }

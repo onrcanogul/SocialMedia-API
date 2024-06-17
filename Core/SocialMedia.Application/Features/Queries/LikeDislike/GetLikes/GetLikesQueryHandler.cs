@@ -14,7 +14,7 @@ namespace SocialMedia.Application.Features.Queries.LikeDislike.GetLikes
     {
         public async Task<GetLikesQueryResponse> Handle(GetLikesQueryRequest request, CancellationToken cancellationToken)
         {
-            LikeDto likeDto = await service.GetLikes(request.PostId);
+            LikeResponseDto likeDto = await service.GetLikes(request.PostId);
 
             return new()
             {

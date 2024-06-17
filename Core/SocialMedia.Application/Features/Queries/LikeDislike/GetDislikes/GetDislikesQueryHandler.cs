@@ -13,7 +13,7 @@ namespace SocialMedia.Application.Features.Queries.LikeDislike.GetDislikes
     {
         public async Task<GetDislikesQueryResponse> Handle(GetDislikesQueryRequest request, CancellationToken cancellationToken)
         {
-            DislikeDto dislike = await service.GetDislikes(request.PostId);
+            DislikeResponseDto dislike = await service.GetDislikes(request.PostId);
 
             return new()
             {

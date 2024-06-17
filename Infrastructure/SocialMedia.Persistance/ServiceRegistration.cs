@@ -58,6 +58,8 @@ namespace SocialMedia.Persistance
             services.AddScoped<IPostRepository, PostRepository>();
             services.AddScoped<ICommentRepository, CommentRepository>();
             services.AddScoped<IFriendshipRepository, FriendshipRepository>();
+            services.AddScoped<ILikeRepository, LikeRepository>();
+            services.AddScoped<IDislikeRepository, DislikeRepository>();
 
             //services
             services.AddScoped<IUserService, UserService>();
@@ -65,6 +67,8 @@ namespace SocialMedia.Persistance
             services.AddScoped<ICommentService, CommentService>();
             services.AddScoped<IFriendshipService, FriendshipService>();
             services.AddScoped<IUnitOfWork, UnitOfWork.UnitOfWork>();
+            services.AddScoped<ILikeDislikeService, LikeDislikeService>();
+            services.AddScoped<IAuthService, AuthService>();
 
             
 
