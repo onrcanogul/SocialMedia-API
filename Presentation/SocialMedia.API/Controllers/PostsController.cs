@@ -25,7 +25,7 @@ namespace SocialMedia.API.Controllers
             GetPostByIdQueryResponse response = await mediator.Send(request);
             return Ok(response);
         }
-        [HttpGet("users/{id}")]
+        [HttpGet("user/{id}")]
         public async Task<IActionResult> GetPostByUser(GetPostByUserQueryRequest request)
         {
             GetPostByUserQueryResponse response = await mediator.Send(request);

@@ -5,6 +5,7 @@ using SocialMedia.Application.Features.Commands.Comments.CreateComment;
 using SocialMedia.Application.Features.Commands.Comments.DeleteComment;
 using SocialMedia.Application.Features.Commands.Comments.UpdateComment;
 using SocialMedia.Application.Features.Queries.Comments.GetAllComments;
+using SocialMedia.Application.Features.Queries.Comments.GetCommentById;
 using SocialMedia.Application.Features.Queries.Comments.GetCommentsByPost;
 using SocialMedia.Application.Features.Queries.Comments.GetCommentsByUser;
 
@@ -18,6 +19,12 @@ namespace SocialMedia.API.Controllers
         public async Task<IActionResult> GetAllComments(GetAllCommentsQueryRequest request)
         {
             GetAllCommentsQueryResponse response = await mediator.Send(request);
+            return Ok(response);
+        }
+        [HttpGet]
+        public async Task<IActionResult> GetCommentById(GetCommentByIdQueryRequest request)
+        {
+            GetCommentByIdQueryResponse response = await mediator.Send(request);
             return Ok(response);
         }
         [HttpGet("user/{Id}")]
