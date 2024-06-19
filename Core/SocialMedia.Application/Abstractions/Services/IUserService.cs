@@ -1,10 +1,5 @@
 ﻿using SocialMedia.Application.Dtos;
 using SocialMedia.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SocialMedia.Application.Abstractions.Services
 {
@@ -15,5 +10,7 @@ namespace SocialMedia.Application.Abstractions.Services
         Task UpdateRefreshTokenAsync(string refreshToken, AppUser user, DateTime accessTokenEndDate);
 
         Task<List<UserDto>> GetAllUsers();
+
+        Task<UserDto> GetUserById(string id);
     }
 }

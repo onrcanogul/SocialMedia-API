@@ -16,6 +16,9 @@ namespace SocialMedia.Persistance.Contexts
         public DbSet<Friendship> Friendships { get; set; }
         public DbSet<Like> Likes { get; set; }
         public DbSet<Dislike> Dislikes { get; set; }
+        public DbSet<Domain.Entities.File> Files { get; set; }
+        public DbSet<PostImageFile> PostImageFiles { get; set; }
+        public DbSet<ProfileImageFile> ProfileImageFiles { get; set; }
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.Entity<Friendship>()

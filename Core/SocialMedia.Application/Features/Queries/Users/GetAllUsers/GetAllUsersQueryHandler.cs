@@ -2,7 +2,7 @@
 using SocialMedia.Application.Abstractions.Services;
 using SocialMedia.Application.Dtos;
 
-namespace SocialMedia.Application.Features.Queries.Users
+namespace SocialMedia.Application.Features.Queries.Users.GetAllUsers
 {
     public class GetAllUsersQueryHandler(IUserService userService) : IRequestHandler<GetAllUsersQueryRequest, GetAllUsersQueryResponse>
     {

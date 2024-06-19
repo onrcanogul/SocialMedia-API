@@ -1,9 +1,4 @@
 ﻿using SocialMedia.Domain.Entities.Base;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SocialMedia.Domain.Entities
 {
@@ -17,6 +12,7 @@ namespace SocialMedia.Domain.Entities
 
         public virtual ICollection<Like> Likes { get; set; } = new List<Like>();
         public virtual ICollection<Dislike> Dislikes { get; set; } = new List<Dislike>();
+
 
     }
 }

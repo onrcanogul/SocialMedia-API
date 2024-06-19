@@ -34,7 +34,7 @@ namespace SocialMedia.API.Controllers
             return Ok(response);
         }
         [HttpGet("post/{Id}")]
-        public async Task<IActionResult> GetCommentsByPost(GetCommentsByPostQueryRequest request)
+        public async Task<IActionResult> GetCommentsByPost([FromRoute]GetCommentsByPostQueryRequest request)
         {
             GetCommentsByPostQueryResponse response = await mediator.Send(request);
             return Ok(response);
@@ -50,7 +50,7 @@ namespace SocialMedia.API.Controllers
         public async Task<IActionResult> UpdateComment(UpdateCommentCommandRequest request)
         {
             UpdateCommentCommandResponse response = await mediator.Send(request);
-            return Ok(response);
+            return NoContent();
         }
         [HttpDelete("{Id}")]
         public async Task<IActionResult> DeleteComment(DeleteCommentCommandRequest request)

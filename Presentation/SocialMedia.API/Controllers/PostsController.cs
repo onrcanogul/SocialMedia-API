@@ -20,13 +20,13 @@ namespace SocialMedia.API.Controllers
             return Ok(response);
         }
         [HttpGet("{Id}")]
-        public async Task<IActionResult> GetPostById(GetPostByIdQueryRequest request)
+        public async Task<IActionResult> GetPostById([FromRoute]GetPostByIdQueryRequest request)
         {
             GetPostByIdQueryResponse response = await mediator.Send(request);
             return Ok(response);
         }
-        [HttpGet("user/{id}")]
-        public async Task<IActionResult> GetPostByUser(GetPostByUserQueryRequest request)
+        [HttpGet("user/{Id}")]
+        public async Task<IActionResult> GetPostByUser([FromRoute]GetPostByUserQueryRequest request)
         {
             GetPostByUserQueryResponse response = await mediator.Send(request);
             return Ok(response);
@@ -37,14 +37,14 @@ namespace SocialMedia.API.Controllers
             CreatePostCommandResponse response = await mediator.Send(request);
             return Ok(response);
         }
-        [HttpPut("{Id}")]
+        [HttpPut]
         public async Task<IActionResult> UpdatePost(UpdatePostCommandRequest request)
         {
             UpdatePostCommandResponse response = await mediator.Send(request);
-            return Ok(response);
+            return NoContent();
         }
         [HttpDelete("{Id}")]
-        public async Task<IActionResult> DeletePost(DeletePostCommandRequest request)
+        public async Task<IActionResult> DeletePost([FromRoute]DeletePostCommandRequest request)
         {
             DeletePostCommandResponse response = await mediator.Send(request);
             return Ok(response);

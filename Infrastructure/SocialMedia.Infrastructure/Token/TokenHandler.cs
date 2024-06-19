@@ -30,7 +30,7 @@ namespace SocialMedia.Infrastructure.Token
                 notBefore: DateTime.UtcNow,
                 expires: token.Expiration,
                 signingCredentials: signingCredentials,
-                claims: new List<Claim>() { }
+                claims: new List<Claim>() { new("id",user.Id) }
                 );
 
             JwtSecurityTokenHandler handler = new();

@@ -27,13 +27,13 @@ namespace SocialMedia.API.Controllers
         public async Task<IActionResult> Like(LikeCommandRequest request)
         {
             LikeCommandResponse response = await mediator.Send(request);
-            return Ok(response);
+            return NoContent();
         }
         [HttpPost("dislikes")]
         public async Task<IActionResult> Dislike(DislikeCommandRequest request)
         {
             DislikeCommandResponse response = await mediator.Send(request);
-            return Ok(response);
+            return NoContent();
         }
     }
 }

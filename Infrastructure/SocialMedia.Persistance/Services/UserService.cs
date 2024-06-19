@@ -34,6 +34,20 @@ namespace SocialMedia.Persistance.Services
             return usersDto;
         }
 
+        public async Task<UserDto> GetUserById(string id)
+        {
+            AppUser? user = await userManager.Users
+                .Include(x => x.Friendships)
+                .Include(x => x.Posts)
+                .Include(x => x.Comments)
+                .Include(x => x.Likes)
+                .Include(x => x.Dislikes)
+                .FirstOrDefaultAsync(x => x.Id == id);
+
+            UserDto userDto = mapper.Map<UserDto>(user);
+            return userDto;
+        }
+
         public async Task UpdateRefreshTokenAsync(string refreshToken, AppUser user, DateTime accessTokenEndDate)
         {
             if(user != null) 
