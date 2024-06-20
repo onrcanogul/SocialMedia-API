@@ -21,4 +21,8 @@
     <ProjectReference Include="..\..\Infrastructure\SocialMedia.Persistance\SocialMedia.Persistance.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\" />
+  </ItemGroup>
+
 </Project>

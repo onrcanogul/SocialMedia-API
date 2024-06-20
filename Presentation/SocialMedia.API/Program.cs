@@ -1,5 +1,7 @@
 using SocialMedia.Application;
 using SocialMedia.Infrastructure;
+using SocialMedia.Infrastructure.Services.Storage.Azure;
+using SocialMedia.Infrastructure.Services.Storage.Local;
 using SocialMedia.Persistance;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,6 +13,7 @@ builder.Services.AddCors(options => options.AddDefaultPolicy(policy =>
     policy.WithOrigins("http://localhost:4200", "https://localhost:4200").AllowAnyHeader().AllowAnyMethod().AllowCredentials()
 ));
 builder.Services.AddControllers();
+builder.Services.AddStorage<AzureStorage>();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddApplicationServices();
 builder.Services.AddPersistanceServices(builder.Configuration);
@@ -33,6 +36,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseStaticFiles();
 app.UseHttpsRedirection();
 
 app.UseAuthorization();

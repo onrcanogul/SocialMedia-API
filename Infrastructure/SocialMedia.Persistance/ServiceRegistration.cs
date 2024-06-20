@@ -60,6 +60,8 @@ namespace SocialMedia.Persistance
             services.AddScoped<IFriendshipRepository, FriendshipRepository>();
             services.AddScoped<ILikeRepository, LikeRepository>();
             services.AddScoped<IDislikeRepository, DislikeRepository>();
+            services.AddScoped<IProfileImageFileRepository, ProfileImageFileRepository>();
+            services.AddScoped<IPostImageFileRepository, PostImageFileRepository>();
 
             //services
             services.AddScoped<IUserService, UserService>();
